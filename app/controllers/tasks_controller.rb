@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-before_action :set_taso, only:[:show]
+before_action :set_task, only:[:show]
   def index
    @tasks = Task.all
   end
@@ -8,8 +8,9 @@ before_action :set_taso, only:[:show]
   @task = Task.new
   end
 
-  def create_table
-
+  def create
+  Task.create(task_params)
+  redirect_to tasks_path,notice:"タスクを作成"
   end
 
   def show
