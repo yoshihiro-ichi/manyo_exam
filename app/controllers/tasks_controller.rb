@@ -32,7 +32,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   def destroy
     @task.destroy
-    redirect_to tasks_path
+    redirect_to tasks_path,notice:"ブログを削除しました！"
   end
 
   private
