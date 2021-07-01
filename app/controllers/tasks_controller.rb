@@ -4,6 +4,14 @@ before_action :set_taso, only:[:show]
    @tasks = Task.all
   end
 
+  def new
+  @task = Task.new
+  end
+
+  def create_table
+
+  end
+
   def show
   end
 
