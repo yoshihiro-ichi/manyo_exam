@@ -16,8 +16,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
       it '作成済みのタスク一覧が表示される' do
-        task = FactoryBot.create(:task, name: 'task')
+        task = FactoryBot.create(:task, name: 'task',content:'task')
                visit tasks_path
+               expect(page).to have_content 'task'
                expect(page).to have_content 'task'
       end
     end
@@ -26,7 +27,9 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '詳細表示機能' do
      context '任意のタスク詳細画面に遷移した場合' do
        it '該当タスクの内容が表示される' do
-          visit task_path(tasks.id)
+            task = FactoryBot.create(:task, name: 'task',content:'task')
+            visit task_path(task.id)
+          expect(page).to have_content 'task'
           expect(page).to have_content 'task'
        end
      end
