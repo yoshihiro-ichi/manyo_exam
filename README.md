@@ -19,14 +19,14 @@ colum | type | association |index|
 |text_id|integer  |has_many tasks||
 
 |heroku login -i|
-|heroku create|
-|Heroku stack:set heroku-18|
-|heroku buildpacks:set heroku/ruby|
-|heroku buildpacks:add --index 1 heroku/nodejs|
-|rails assets:precompile RAILS_ENV=production|
-|git add -A|
-|git commit -m "コミットメッセージ "|
-|git push heroku master|
+  |heroku create|
+  |Heroku stack:set heroku-18|
+  |heroku buildpacks:set heroku/ruby|
+  |heroku buildpacks:add --index 1 heroku/nodejs|
+  |rails assets:precompile RAILS_ENV=production|
+  |git add -A|
+  |git commit -m "コミットメッセージ "|
+  |git push heroku master|
         もしくは
 
-|git push heroku a ブランチ名:master|
+  |git push heroku a ブランチ名:master|
