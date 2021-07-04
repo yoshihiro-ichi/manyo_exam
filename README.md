@@ -1,24 +1,19 @@
-# README
+# 見出し1
+|colum | type | association |index|
+|:---|:---:|---:|---:|
+|user_name|string |has_many tasks | | |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## 見出し2
+colum | type | association |index|
+|:---|:---:|---:|---:|
+|name|string|  |    |
+|content|text|   |    |
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 見出し3
+colum | type | association |index|
+|:---|:---:|---:|---:|
+|lbel_name|string|  |    |
+|text_id|integer  |has_many tasks||
