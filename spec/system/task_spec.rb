@@ -29,9 +29,9 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'タスクが作成日時の降順に並んでいる場合' do
       it '新しいタスクが一番上に表示される' do
+         visit tasks_path
         task_list = all('.task_row')
-        expect(task_list[0]).to have_content 'タスク1'
-        expect(task_list[1]).to have_content 'タスク2'
+        expect(task_list[0]).to have_content 'task'      
       end
     end
   end
