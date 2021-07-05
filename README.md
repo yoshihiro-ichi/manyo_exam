@@ -18,6 +18,7 @@ colum | type | association |index|
 |lbel_name|string|  |    |
 |text_id|integer  |has_many tasks||
 
+
 `|heroku login -i|`    
 `|heroku create|`      
 `|Heroku stack:set heroku-18|`    
@@ -29,4 +30,6 @@ colum | type | association |index|
 `|git push heroku master|`  
   もしくは  
 `|git push heroku a ブランチ名:master|`
+
+=======
 
