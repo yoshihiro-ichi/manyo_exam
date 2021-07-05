@@ -6,7 +6,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in 'task[name]', with: '新タスク'
         fill_in 'task[content]', with: 'タスク内容'
-        click_button 'Create Task'
+        click_button '登録する'
         visit tasks_path
         expect(page).to have_content '新タスク'
         expect(page).to have_content 'タスク内容'
@@ -31,7 +31,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '新しいタスクが一番上に表示される' do
          visit tasks_path
         task_list = all('.task_row')
-        expect(task_list[0]).to have_content 'task'      
+        expect(task_list[0]).to have_content 'task'
       end
     end
   end
