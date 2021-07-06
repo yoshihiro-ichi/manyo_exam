@@ -10,7 +10,7 @@
   <tr>
     <td class="task_row"><%= task.name %></td>
     <td><%= task.content %></td>
-    <td><%= task.deadline%></td>
+    <td class="sort_deadline"><%= task.deadline%></td>
     <td><%= link_to t('view.details'),task_path(task.id) %></td>
     <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('view.delete'), task_path(task.id),method: :delete %></td>
