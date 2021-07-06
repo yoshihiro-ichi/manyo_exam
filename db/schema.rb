@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_07_05_122759) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deadline", null: false
+    t.datetime "deadline", default: "2021-07-01 00:00:00", null: false
   end
 
 end
