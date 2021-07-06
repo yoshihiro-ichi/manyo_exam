@@ -1,17 +1,33 @@
 class TasksController < ApplicationController
 before_action :set_task, only:[:show,:edit,:destroy,:update]
   def index
-    @tasks = Task.all
-    @tasks.where('title LIKE ?', "%#{params[:search]}%")
+
     if params[:sort_deadline]
       @tasks = Task.all.order(deadline: :desc)
+    elsif params[:name].present? && params[:status].present?
+      @tasks = Task.where('name like ?',"%#{params[:name]}%").where(status: params[:status])
     else
-      @tasks = Task.all.order(created_at: :desc,)
+      @tasks = Task.all.order(created_at: :desc)
     end
+    # if params[:task].present?
+      # if @tasks = Task.where('task like ?'&&'status like?', "%#{params[:task]}%","%#{params[:status]}%")
+      # elsif
+      #     @tasks = Task.where('task like ?', "%#{params[:task]}%")
+      # elsif
+      #     @tasks = Task.where(status: params[:status])
+      # end
+          # end
   end
   def new
   @task = Task.new
   end
+
+  def search
+    @tasks = Task.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
+
 
   def create
     @task = Task.create(task_params)
