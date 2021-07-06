@@ -6,6 +6,8 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
       @tasks = Task.all.order(deadline: :desc)
     elsif params[:name].present? && params[:status].present?
       @tasks = Task.where('name like ?',"%#{params[:name]}%").where(status: params[:status])
+    elsif params[:name].present?
+      @tasks = Task.where('name like ?',"%#{params[:name]}%")
     else
       @tasks = Task.all.order(created_at: :desc)
     end
