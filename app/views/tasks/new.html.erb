@@ -21,7 +21,7 @@
     <%= form.label :deadline %>
     <%= form.datetime_field :deadline%>
   </div>
-
+  <%= form.select :status, [["未着手","未着手"],["着手","着手"],["完了","完了"]] ,include_blank: "選択して下さい" %>
   <%= form.submit %>
 <% end %>
 <%= link_to "一覧画面にもどる", tasks_path %>
