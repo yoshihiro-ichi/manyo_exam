@@ -4,5 +4,6 @@ FactoryBot.define do
     name { 'test_name' }
     content { 'test_content' }
     deadline{'2021-07-01 00:00:00'}
+    status{'未着手'}
   end
 end
