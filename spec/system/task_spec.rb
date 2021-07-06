@@ -7,11 +7,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         fill_in 'task[name]', with: '新タスク'
         fill_in 'task[content]', with: 'タスク内容'
         fill_in 'task[deadline]',with: '2021-07-01 00:00:00'
+        select '未着手', from: 'task[status]'        
         click_button '登録する'
         visit tasks_path
         expect(page).to have_content '新タスク'
         expect(page).to have_content 'タスク内容'
         expect(page).to have_content '2021-07-01 00:00:00'
+        expect(page).to have_content '未着手'
       end
     end
   end
