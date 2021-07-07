@@ -6,4 +6,11 @@ FactoryBot.define do
     deadline {'2021-07-01 00:00:00'}
     status {'未着手'}
   end
+
+  factory :scond_task, class: Task do
+    name { 'second_test_name' }
+    content { 'second_test_content' }
+    deadline {'2021-07-02 00:00:00'}
+    status {'着手'}
+  end
 end

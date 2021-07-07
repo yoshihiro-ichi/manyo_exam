@@ -42,6 +42,7 @@ RSpec.describe 'タスク管理機能', type: :system do
       it '終了期限が一番遅いタスクが一番上に表示される' do
          visit tasks_path
          click_on "終了期限"
+        sleep 0.5
         task_list = all('.sort_deadline')
         expect(task_list[0]).to have_content '2021-07-01 00:00:00'
       end
@@ -58,25 +59,34 @@ RSpec.describe 'タスク管理機能', type: :system do
   describe '検索機能' do
     before do
       # 必要に応じて、テストデータの内容を変更して構わない
-      FactoryBot.create(:task, nema: "task")
-      FactoryBot.create(:second_task, title: "sample")
+      FactoryBot.create(:task, name: "test_name")
+      FactoryBot.create(:scond_task, status: "完了")
     end
     context 'タイトルであいまい検索をした場合' do
       it "検索キーワードを含むタスクで絞り込まれる" do
         visit tasks_path
-        # タスクの検索欄に検索ワードを入力する (例: task)
-        # 検索ボタンを押す
-        expect(page).to have_content 'task'
+        fill_in :name, with: 'test_name'
+        click_on "検索"
+        expect(page).to have_content "test_name"
       end
     end
     context 'ステータス検索をした場合' do
       it "ステータスに完全一致するタスクが絞り込まれる" do
-        # ここに実装する
-        # プルダウンを選択する「select」について調べてみること
+          visit tasks_path
+          select '完了', from: 'status'
+          visit tasks_path
+          expect(page).to have_content "完了"
       end
     end
     context 'タイトルのあいまい検索とステータス検索をした場合' do
       it "検索キーワードをタイトルに含み、かつステータスに完全一致するタスク絞り込まれる" do
-        # ここに実装する
+            visit tasks_path
+            fill_in :name, with: 'test_name'
+            select '完了', from: 'status'
+            visit tasks_path
+            expect(page).to have_content "test_name"
+            expect(page).to have_content "完了"
       end
     end
+  end
+end
