@@ -6,12 +6,13 @@
 
 
 
-## 見出し2
+## tasks
 colum | type | association |index|
 |:---|:---:|---:|---:|
 |name|string|  |    |
 |content|text|   |    |
-
+|status|string|  |    |
+|deadline|datetime|     |
 ### 見出し3
 colum | type | association |index|
 |:---|:---:|---:|---:|
