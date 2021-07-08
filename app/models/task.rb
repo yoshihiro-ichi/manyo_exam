@@ -4,11 +4,6 @@ class Task < ApplicationRecord
   validates :name, presence: true
   enum priority:{ 低:0, 中:1, 高:2 }
 
-  # scope :name_status_search, ->(name,status) do
-  #   where('name like ?',"%#{name}%").
-  #     or where(status:status)
-
-  # end
   scope :name_search , ->(name) do
     where('name like ?',"%#{name}%")
   end

@@ -4,8 +4,6 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
     if params[:sort_deadline].present?
       @tasks = Task.all.order(deadline: :desc)
-    # elsif params[:name] && params[:status].present?
-    #   @tasks = Task.name_status_search(params[:name],params[:status])
     elsif params[:name].present?
       @tasks = Task.name_search(params[:name])
     elsif params[:status].present?
