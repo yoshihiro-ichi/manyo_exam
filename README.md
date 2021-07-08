@@ -9,10 +9,11 @@
 ## tasks
 colum | type | association |index|
 |:---|:---:|---:|---:|
-|name|string|  |    |
-|content|text|   |    |
-|status|string|  |    |
-|deadline|datetime|     |
+|name|string|       |    |
+|content|text|      |    |
+|status|string|     |    |
+|deadline|datetime| |    |
+|priority|integer|  |    |
 ### 見出し3
 colum | type | association |index|
 |:---|:---:|---:|---:|
