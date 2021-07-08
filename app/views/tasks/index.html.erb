@@ -1,18 +1,34 @@
 <h1>タスク一覧</h1>
 <p><%= notice %></p>
+<%= form_with url: tasks_path, method: :get, local: true do |form| %>
+  <%= form.text_field :name %>
+  <%= form.select :status, [["未着手","未着手"],["着手","着手"],["完了","完了"]] ,include_blank: "選択して下さい" %>
+  <%= form.submit '検索'%>
+<% end %>
+
 <table>
   <tr>
     <th>タイトル</th>
     <th>詳細</th>
+    <th>終了期限</th>
+    <th>ステータス</th>
+    <th>優先度</th>
   </tr>
 <% @tasks.each do |task| %>
   <tr>
     <td class="task_row"><%= task.name %></td>
     <td><%= task.content %></td>
-    <td><%= link_to t('view.details'),task_path(task.id) %></td>
-    <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to t('view.delete'), task_path(task.id),method: :delete %></td>
+    <td class="sort_deadline"><%= task.deadline%></td>
+    <td><%= task.status %></td>
+    <td class="sort_pryority"><%= task.priority %></td>
+    <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
+    <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
+    <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
   </tr>
 <% end %>
 </table>
+<button type="button" class="btn btn-warning btn-xs"><%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %></button>
+<button type="button" class="btn btn-primary btn-xs"><%= link_to "優先順位でソートする", tasks_path(sort_pryority: "true") %></button>
 <p><%= link_to '新規投稿', new_task_path %></p>
+<%= link_to "一覧画面にもどる", tasks_path %>
+<%= paginate @tasks %>

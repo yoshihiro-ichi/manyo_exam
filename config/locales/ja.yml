@@ -4,6 +4,7 @@ ja:
     details: 詳細
     edit: 編集
     delete: 削除
+    deadline : 終了期限
   activerecord:
     errors:
       messages:

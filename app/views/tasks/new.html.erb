@@ -17,6 +17,18 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  <div class="deadline">
+    <%= form.label :deadline %>
+    <%= form.datetime_field :deadline%>
+  </div>
+  <div class="stetus">
+    <%= form.label :status %>
+    <%= form.select :status, [["未着手","未着手"],["着手","着手"],["完了","完了"]] ,include_blank: "選択して下さい" %>
+  </div>
+  <div class="priority">
+    <%= form.label :priority %>
+    <%= form.select :priority, Task.priorities.keys %>
+  </div>
   <%= form.submit %>
 <% end %>
 <%= link_to "一覧画面にもどる", tasks_path %>
