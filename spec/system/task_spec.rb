@@ -18,7 +18,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
   end
 
-  let!(:task) { FactoryBot.create(:task, name: 'task' ,deadline: '2021-07-01 00:00:00') }
+  let!(:task) { FactoryBot.create(:task, name: 'task' ,deadline: '2021-07-01 00:00:00' ,priority: '高') }
   before  do
 # 「一覧画面に遷移した場合」や「タスクが作成日時の降順に並んでいる場合」など、contextが実行されるタイミングで、before内のコードが実行される
    visit tasks_path
@@ -47,6 +47,19 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[0]).to have_content '2021-07-01 00:00:00'
       end
     end
+    context '優先順位でソートするというリンクを押した場' do
+      it 'が一番遅優先順位が高いタスクが一番上に表示される' do
+         visit tasks_path
+         click_on "優先順位"
+        sleep 0.5
+        test_list = all('.sort_pryority')
+        expect(test_list[0]).to have_content '高'
+      end
+    end
+
+
+
+
  end
   describe '詳細表示機能' do
      context '任意のタスク詳細画面に遷移した場合' do
