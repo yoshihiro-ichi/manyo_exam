@@ -21,14 +21,14 @@
     <td class="sort_deadline"><%= task.deadline%></td>
     <td><%= task.status %></td>
     <td class="sort_pryority"><%= task.priority %></td>
-    <td><%= link_to t('view.details'),task_path(task.id) %></td>
-    <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to t('view.delete'), task_path(task.id),method: :delete %></td>
+    <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
+    <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
+    <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
   </tr>
 <% end %>
 </table>
-<%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %>
-<%= link_to "優先順位でソートする", tasks_path(sort_pryority: "true") %>
+<button type="button" class="btn btn-warning btn-xs"><%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %></button>
+<button type="button" class="btn btn-primary btn-xs"><%= link_to "優先順位でソートする", tasks_path(sort_pryority: "true") %></button>
 <p><%= link_to '新規投稿', new_task_path %></p>
 <%= link_to "一覧画面にもどる", tasks_path %>
 <%= paginate @tasks %>

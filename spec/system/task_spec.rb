@@ -41,7 +41,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '終了期限でソートするというリンクを押した場' do
       it '終了期限が一番遅いタスクが一番上に表示される' do
          visit tasks_path
-         click_on "終了期限"
+         click_button"終了期限でソートする"
         sleep 0.5
         task_list = all('.sort_deadline')
         expect(task_list[0]).to have_content '2021-07-01 00:00:00'
@@ -50,7 +50,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     context '優先順位でソートするというリンクを押した場' do
       it 'が一番遅優先順位が高いタスクが一番上に表示される' do
          visit tasks_path
-         click_on "優先順位"
+         click_button "優先順位"
         sleep 0.5
         test_list = all('.sort_pryority')
         expect(test_list[0]).to have_content '高'
