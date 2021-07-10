@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
 before_action :set_task, only:[:show,:edit,:destroy,:update]
+  @task.user_id = current_user.id
   def index
 
     if params[:sort_deadline].present?
@@ -36,6 +37,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   def create
     @task = Task.create(task_params)
+    @task.user_id = current_user.id
     if @task.save
        redirect_to tasks_path, notice: "ブログを作成しました！"
     else
@@ -63,7 +65,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   private
   def task_params
-    params.require(:task).permit(:name,:content,:deadline,:status,:priority)
+    params.require(:task).permit(:name,:content,:deadline,:status,:priority )
   end
 
   def set_task
