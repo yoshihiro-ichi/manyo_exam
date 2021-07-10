@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_08_214444) do
+ActiveRecord::Schema.define(version: 2021_07_10_180740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_214444) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "password_digest"
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "tasks", "users"
