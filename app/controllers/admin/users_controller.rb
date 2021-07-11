@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :if_not_admin
-    before_action :set_user, only: [:show, :edit, :destroy]
+    before_action :set_user, only: [:show, :edit, :destroy,:update]
     def new
        @user = User.new
      end
@@ -19,12 +19,26 @@ class Admin::UsersController < ApplicationController
        end
      end
 
-     def edit
-      end
+    def edit
+    end
+
+    def update
+        if @user.update(user_params)
+          redirect_to admin_users_path, notice: "更新完了"
+        elsif @user.errors.any?
+          render :new
+        else
+          redirect_to admin_users_path, notice: "最後の管理者です、消せません"
+        end
+    end
 
   private
+  def user_params
+      params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+  end
+
   def if_not_admin
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path,notice: "管理者以外はアクセスできません" unless current_user.admin?
   end
 
   def set_user
