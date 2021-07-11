@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
 before_action :set_task, only:[:show,:edit,:destroy,:update]
-  @task.user_id = current_user.id
+
   def index
 
     if params[:sort_deadline].present?
