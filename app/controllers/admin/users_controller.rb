@@ -32,7 +32,9 @@ class Admin::UsersController < ApplicationController
       end
   end
 
-
+  def show
+    @tasks = @user.tasks
+  end
 
   def destroy
     if @user.destroy
@@ -45,7 +47,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-      params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :admin, :password, :password_confirmation )
   end
 
   def if_not_admin

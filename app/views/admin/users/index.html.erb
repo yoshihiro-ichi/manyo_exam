@@ -15,9 +15,9 @@
         <td><%= user.name %></td>
         <td><%= user.tasks.count %></td>
         <td><%= user.admin %></td>
-        <td><%= link_to t('view.details'), user, class: "btn btn-outline-primary"%></td>
+        <td><%= link_to t('view.details'),admin_user_path(user), class: "btn btn-outline-primary"%></td>
         <td><%= link_to t('view.edit'), edit_admin_user_path(user), class: "btn btn-outline-success" ,data:{ confirm: "編集しますか？" }%></td>
-        <td><%= link_to t('view.delete'), admin_user_path(user), method: :delete, id: "delete_button", data: { confirm: '削除してもいいですか？' }, class: "btn btn-outline-danger" %></td>
+        <td><%= link_to t('view.delete'), admin_user_path(user) , method: :delete, id: "delete_button", data: { confirm: '削除してもいいですか？' }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

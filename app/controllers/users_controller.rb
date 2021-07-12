@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :ensure_correct_user,only:[:show]
+
   def show
     @user = User.find(params[:id])
     @tasks = Task.all
