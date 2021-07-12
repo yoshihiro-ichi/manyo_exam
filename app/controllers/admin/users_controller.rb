@@ -32,6 +32,8 @@ class Admin::UsersController < ApplicationController
       end
   end
 
+
+
   def destroy
     if @user.destroy
      redirect_to admin_users_path, notice: "削除完了"

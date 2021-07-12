@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user,only:[:show]
   def show
     @user = User.find(params[:id])
+    @tasks = Task.all
     redirect_to new_session_path unless current_user
   end
 
