@@ -15,7 +15,7 @@
         <% end %>
         <% if logged_in? %>
           <%= link_to "マイページ", user_path(current_user.id) %>
-          <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+        <%= link_to "ログアウト", session_path(current_user.id), method: :delete ,class: "logout" %>
           <%= link_to "管理者ページ",admin_users_path %>
         <% else %>
           <%= link_to "Sign up", new_user_path %>

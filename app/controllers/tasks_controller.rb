@@ -26,6 +26,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
   end
   def new
   @task = Task.new
+  
   end
 
   # def search

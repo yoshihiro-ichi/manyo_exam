@@ -23,6 +23,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
+    
       if @user.update(user_params)
         redirect_to admin_users_path, notice: "更新完了"
       elsif @user.errors.any?
