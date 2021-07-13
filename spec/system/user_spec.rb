@@ -97,5 +97,32 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
         expect(page).to have_content "タスク一覧"
       end
     end
+    context '管理ユーザーがユーザーの詳細にアクセスした場合' do
+      it 'ユーザー詳細に遷移できる' do
+        visit new_session_path
+        fill_in :session_email,with:'tack@a.com'
+        fill_in :session_password,with: "111111"
+        click_on 'commit'
+        sleep 0.3
+        visit admin_user_path (@user.id)
+        expect(page).to have_content "テストユーザーのページ"
+      end
+    end
+    context '管理ユーザーがユーザーの編集にアクセスした場合' do
+      it 'ユーザー編集ページに遷移し編集できる' do
+        visit new_session_path
+        fill_in :session_email,with:'tack@a.com'
+        fill_in :session_password,with: "111111"
+        click_on 'commit'
+        sleep 0.3
+        visit edit_admin_user_path (@user.id)
+        fill_in :user_name,with: "坊主"
+        fill_in :user_email,with: "aaaa@a.com"
+        fill_in :user_password,with: "111111"
+        fill_in :user_password_confirmation, with: "111111"
+        select '一般', from: 'user[admin]'
+        click_on 'commit'
+      end
+    end
   end
 end
