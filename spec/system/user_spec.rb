@@ -77,4 +77,32 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
       end
     end
   end
+  describe '管理者機能'do
+    before do
+     # @admin_user = FactoryBot.create(:second_user,email:'tack@a.com')
+     # @user =  FactoryBot.create(:user,email:'tac@a.com')
+    end
+    context '管理ユーザーが管理画面にアクセスした場合' do
+      it '管理画面に遷移できる' do
+        visit new_session_path
+        fill_in :session_email,with:'secondtest@a.com'
+        fill_in :session_password,with: "111111"
+        click_on 'commit'
+         # binding.irb
+        click_link '管理者ページ'
+        expect(page).to have_content "管理者ページ"
+      end
+    end
+    context '一般ユーザーが管理画面にアクセスした場合' do
+      it 'タスク一覧画面に戻る' do
+        visit new_session_path
+        fill_in :session_email,with:'test@a.com'
+        fill_in :session_password,with: "111111"
+        click_on 'commit'
+        click_link '管理者ページ'
+         binding.irb
+        expect(page).to have_content "タスク一覧"
+      end
+    end
+  end
 end
