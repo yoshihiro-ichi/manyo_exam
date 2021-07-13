@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'セッション機能のテスト', type: :feature do
-  before do
-    # ユーザを作成する
-     # @user = User.create!( name:'テストユーザー',email: 'foo@example.com', password: '123456')
-    FactoryBot.create(:user)
-    FactoryBot.create(:second_user)
-  end
   it 'ログインする' do
     # トップページを開く
     visit  new_session_path
@@ -79,13 +73,13 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
   end
   describe '管理者機能'do
     before do
-     # @admin_user = FactoryBot.create(:second_user,email:'tack@a.com')
-     # @user =  FactoryBot.create(:user,email:'tac@a.com')
+     @admin_user = FactoryBot.create(:second_user,email:'tack@a.com')
+     @user =  FactoryBot.create(:user,email:'tac@a.com')
     end
     context '管理ユーザーが管理画面にアクセスした場合' do
       it '管理画面に遷移できる' do
         visit new_session_path
-        fill_in :session_email,with:'secondtest@a.com'
+        fill_in :session_email,with:'tack@a.com'
         fill_in :session_password,with: "111111"
         click_on 'commit'
          # binding.irb
@@ -100,7 +94,6 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
         fill_in :session_password,with: "111111"
         click_on 'commit'
         click_link '管理者ページ'
-         binding.irb
         expect(page).to have_content "タスク一覧"
       end
     end
