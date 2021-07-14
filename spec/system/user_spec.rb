@@ -115,8 +115,8 @@ RSpec.describe 'セッション機能のテスト', type: :system do
         fill_in :session_password,with: "111111"
         click_on 'commit'
         all('a')[2].click #管理者UserのUser一覧画面に遷移
-        all('td')[4].click #一番上のテストUser(@userのこと)の編集ボタンをクリックさせる
-         # visit edit_admin_user_path(@user)
+        #all('td')[4].click #一番上のテストUser(@userのこと)の編集ボタンをクリックさせる
+         visit edit_admin_user_path(@user)
         fill_in :user_name,with: "小河原"
         #fill_in :user_email,with: "ogawara@a.com"
         fill_in :user_password,with: "123456"
@@ -124,6 +124,20 @@ RSpec.describe 'セッション機能のテスト', type: :system do
         select '管理者', from: 'user[admin]'
         click_on 'commit'
         expect(page).to have_content "更新完了"
+      end
+    end
+    context '管理ユーザーがユーザーの削除をした場合のテスト' do
+      it 'ユーザーの削除できること' do
+        visit new_session_path
+        fill_in :session_email, with: "tack@a.com"
+        fill_in :session_password, with: "111111"
+        click_on 'commit'
+        click_link '管理者ページ'
+        page.accept_confirm do
+          click_link '削除', match: :first
+        end
+        # binding.irb
+        expect(page).to have_content '削除完了'
       end
     end
   end
