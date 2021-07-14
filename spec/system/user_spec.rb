@@ -140,5 +140,23 @@ RSpec.describe 'セッション機能のテスト', type: :system do
         expect(page).to have_content '削除完了'
       end
     end
+    context '管理ユーザーがユーザーの新規登録をした場合のテスト' do
+     it '新規登録できること' do
+       visit new_session_path
+       fill_in :session_email, with: "tack@a.com"
+       fill_in :session_password, with: "111111"
+       click_on 'commit'
+       click_link '管理者ページ'
+       click_link 'ユーザー新規作成'
+ # binding.irb
+       fill_in :user_name, with: "goma"
+       fill_in :user_email, with: "goma@gmail.com"
+       fill_in :user_password, with: "111111"
+       fill_in :user_password_confirmation, with: "111111"
+       select '一般', from: 'user[admin]'
+       click_on 'commit'
+       expect(current_path).to have_content "/admin/users"
+     end
+   end
   end
 end
