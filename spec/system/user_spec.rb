@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'セッション機能のテスト', type: :feature do
+RSpec.describe 'セッション機能のテスト', type: :system do
   it 'ログインする' do
     # トップページを開く
     visit  new_session_path
@@ -71,7 +71,7 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
       end
     end
   end
-  describe '管理者機能'do
+  describe '管理者機能' do
     before do
      @admin_user = FactoryBot.create(:second_user,email:'tack@a.com')
      @user =  FactoryBot.create(:user,email:'tac@a.com')
@@ -108,20 +108,22 @@ RSpec.describe 'セッション機能のテスト', type: :feature do
         expect(page).to have_content "テストユーザーのページ"
       end
     end
-    context '管理ユーザーがユーザーの編集にアクセスした場合' do
+      context '管理ユーザーがユーザーの編集にアクセスした場合' do
       it 'ユーザー編集ページに遷移し編集できる' do
         visit new_session_path
         fill_in :session_email,with:'tack@a.com'
         fill_in :session_password,with: "111111"
         click_on 'commit'
-        sleep 0.3
-        visit edit_admin_user_path (@user.id)
-        fill_in :user_name,with: "坊主"
-        fill_in :user_email,with: "aaaa@a.com"
-        fill_in :user_password,with: "111111"
-        fill_in :user_password_confirmation, with: "111111"
-        select '一般', from: 'user[admin]'
+        all('a')[2].click #管理者UserのUser一覧画面に遷移
+        all('td')[4].click #一番上のテストUser(@userのこと)の編集ボタンをクリックさせる
+         # visit edit_admin_user_path(@user)
+        fill_in :user_name,with: "小河原"
+        #fill_in :user_email,with: "ogawara@a.com"
+        fill_in :user_password,with: "123456"
+        fill_in :user_password_confirmation, with: "123456"
+        select '管理者', from: 'user[admin]'
         click_on 'commit'
+        expect(page).to have_content "更新完了"
       end
     end
   end

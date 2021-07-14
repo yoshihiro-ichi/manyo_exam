@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
 
    def index
      @users = User.all.includes(:tasks)
-     @users = @users.page(params[:page]).per(8)
+     @users = @users.page(params[:page]).per(12)
    end
 
    def create
@@ -23,11 +23,10 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    
       if @user.update(user_params)
         redirect_to admin_users_path, notice: "更新完了"
       elsif @user.errors.any?
-        render :new
+        render :edit
       else
         redirect_to admin_users_path, notice: "最後の管理者です、消せません"
       end
