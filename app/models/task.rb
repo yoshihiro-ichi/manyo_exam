@@ -4,6 +4,9 @@ class Task < ApplicationRecord
   validates :name, presence: true
   enum priority:{ 低:0, 中:1, 高:2 }
   belongs_to :user
+  has_many :labellings, dependent: :destroy
+  has_many :labels, through: :labellings
+
   scope :name_search , ->(name) do
     where('name like ?',"%#{name}%")
   end
