@@ -15,7 +15,7 @@ Label.create!([{ name: 'No1' },
              { name: 'No10'}
              ])
 
-abel.create!([{ name: 'no11' },
+Label.create!([{ name: 'no11' },
              { name: 'no12' },
              { name: 'no13'},
              { name: 'no14'},
