@@ -1,8 +1,8 @@
-User.create!(name:  "管理者",
-             email: "admin@gmail.com",
-             password:  "111111",
-             password_confirmation: "111111",
-             admin: true)
+# User.create!(name:  "管理者",
+#              email: "admin@gmail.com",
+#              password:  "111111",
+#              password_confirmation: "111111",
+#              admin: true)
 # Label.create!([{ name: 'No1' },
 #              { name: 'No2' },
 #              { name: 'No3'},
@@ -14,6 +14,24 @@ User.create!(name:  "管理者",
 #              { name: 'No9'},
 #              { name: 'No10'}
 #              ])
+
+abel.create!([{ name: 'おこ' },
+             { name: 'げきおこ' },
+             { name: '激おこぷんぷん丸'},
+             { name: 'ムカ着火ファイヤー'},
+             { name: 'どうも'},
+             { name: '私が'},
+             { name: '変な',
+             { name: '叔父さん'},
+             { name: 'です'},
+             { name: ''}
+             ])
+
+
+
+
+
+
 # User.create(
 #             name: "sample",
 #             email: "sample@example.com",
