@@ -1,0 +1,36 @@
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+<br><%= link_to "一覧画面へ", tasks_path %>
+</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><a class="btn btn-primary" style="color:white;"><%= t('view.task_name') %></a></th>
+      <th><a class="btn btn-secondary" style="color:white;"><%= t('view.content') %></a></th>
+      <th><a class="btn btn-success" style="color:white;"><%= t('view.status') %></a></th>
+      <th><a class="btn btn-info" style="color:white;"><%= t('view.deadline') %></a></th>
+      <th><a class="btn btn-primary" style="color:white;"><%= t('view.priority') %></a></th>
+      <th><a class="btn btn-primary" style="color:white;">作成者</a></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.user_id == current_user.id %>
+          <tr>
+            <td><%= task.name %></td>
+            <td><%= task.content %></td>
+            <td><%= task.status %></td>
+            <td><%= task.deadline %></td>
+            <td><%= task.priority %></td>
+            </td>
+            <td class="task_list_name"><%= task.user.name %></td>
+            <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
+            <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
+            <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
+        </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

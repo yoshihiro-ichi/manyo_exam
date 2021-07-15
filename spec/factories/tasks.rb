@@ -6,6 +6,7 @@ FactoryBot.define do
     deadline {'2021-07-01 00:00:00'}
     status {'未着手'}
     priority{'高'}
+    association :user
   end
 
   factory :scond_task, class: Task do
@@ -14,5 +15,6 @@ FactoryBot.define do
     deadline {'2021-07-02 00:00:00'}
     status {'着手'}
     priority {'低'}
+    association :user
   end
 end

@@ -15,16 +15,19 @@
     <th>優先度</th>
   </tr>
 <% @tasks.each do |task| %>
-  <tr>
-    <td class="task_row"><%= task.name %></td>
-    <td><%= task.content %></td>
-    <td class="sort_deadline"><%= task.deadline%></td>
-    <td><%= task.status %></td>
-    <td class="sort_pryority"><%= task.priority %></td>
-    <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
-    <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
-    <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
-  </tr>
+  <% if task.user_id == current_user.id %>
+    <tr>
+      <td class="task_row"><%= task.name %></td>
+      <td><%= task.content %></td>
+      <td class="sort_deadline"><%= task.deadline%></td>
+      <td><%= task.status %></td>
+      <td class="sort_pryority"><%= task.priority %></td>
+      <td><%= task.user.name %></td>
+      <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
+      <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
+      <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
+    </tr>
+  <% end %>
 <% end %>
 </table>
 <button type="button" class="btn btn-warning btn-xs"><%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %></button>

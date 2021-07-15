@@ -5,6 +5,7 @@ ja:
     edit: 編集
     delete: 削除
     deadline : 終了期限
+    priority : 優先順位
   activerecord:
     errors:
       messages:
