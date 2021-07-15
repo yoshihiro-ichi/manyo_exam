@@ -106,5 +106,21 @@ RSpec.describe 'タスク管理機能', type: :system do
             expect(page).to have_content "完了"
       end
     end
+  describe 'ラベル登録機能' do
+    let!(:label){ FactoryBot.create(:label)}
+
+      context 'タスク登録時にラベルも登録した場合' do
+          it  'ラベルも同時に作成される'do
+            visit new_task_path
+            fill_in "task[name]",	with: "合格希望"
+            fill_in "task[content]",	with: "お願いします。"
+            fill_in "task[deadline]",	with: "2021-07-01 00:00:00"
+            select '完了', from: 'task[status]'
+            select '高', from: 'task[priority]'
+            check 'task[label_ids][]'
+            click_button '登録'
+        end
+      end
+    end
   end
 end
