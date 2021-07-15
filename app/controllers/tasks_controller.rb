@@ -54,7 +54,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   def update
         if @task.update(task_params)
-        redirect_to task_path, notice: "ブログを編集しました！"
+        redirect_to tasks_path, notice: "ブログを編集しました！"
       else
         render :edit
       end

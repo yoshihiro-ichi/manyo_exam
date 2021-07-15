@@ -29,6 +29,10 @@
   <%= form.label :priority %>
   <%= form.select :priority, Task.priorities.keys %>
 </div>
-  <%= form.submit %>
+<% Label.all.each do |label| %>
+  <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+  <%= label.name %>
+  <% end %>
+<%= form.submit %>
 <% end %>
 <%= link_to "一覧画面にもどる", tasks_path %>
