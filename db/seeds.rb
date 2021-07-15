@@ -15,16 +15,16 @@ Label.create!([{ name: 'No1' },
              { name: 'No10'}
              ])
 
-abel.create!([{ name: 'おこ' },
-             { name: 'げきおこ' },
-             { name: '激おこぷんぷん丸'},
-             { name: 'ムカ着火ファイヤー'},
-             { name: 'どうも'},
-             { name: '私が'},
-             { name: '変な',
-             { name: '叔父さん'},
-             { name: 'です'},
-             { name: 'わら'}
+abel.create!([{ name: 'no11' },
+             { name: 'no12' },
+             { name: 'no13'},
+             { name: 'no14'},
+             { name: 'no15'},
+             { name: 'no16'},
+             { name: 'no17',
+             { name: 'no18'},
+             { name: 'no19'},
+             { name: 'no20'}
              ])
 
 
