@@ -21,25 +21,13 @@ User.create(
             admin: true
             )
 
-Label.create([
-            { name: '楽しい' },
-            { name: '辛い' },
-            { name: '重要'},
-            { name: 'なんとなく'},
-            { name: 'できれば'},
-            { name: '難題'},
-            { name: '簡単'},
-            { name: '恐ろしい'},
-            { name: '世も末'},
-            { name: 'ありえない'},
-            ])
 
         i = 1
         10.times do
         name = ('a'..'z').to_a.shuffle[1..5].join
         User.create(
          name: name,
-         email: "#{i}@example.com",
+         email: "#{i}@aaaaaaaaa.com",
          password: "password",
          admin: false
         )
@@ -52,15 +40,15 @@ Label.create([
   d1 = Date.parse("2021/04/13")
   d2 = Date.parse("2021/08/30")
   date = Random.rand(d1..d2)
-  title = ('a'..'z').to_a.shuffle[1..11].join
+  name = ('a'..'z').to_a.shuffle[1..11].join
   content = ('A'..'Z').to_a.shuffle[1..15].join
   status = Random.rand(0..2)
   priority = Random.rand(0..2)
   user_id = Random.rand(1..8)
   Task.create(
-   title: title,
+   name: name,
    content: content,
-   limit:  date,
+   deadline:  date,
    status: status,
    priority: priority,
    user_id: user_id
@@ -71,7 +59,7 @@ Label.create([
 task_id = 1
 10.times do
 label_id = Random.rand(1..9)
-TaskLabel.create(
+Labelling.create(
  task_id: task_id,
  label_id: label_id
 )
