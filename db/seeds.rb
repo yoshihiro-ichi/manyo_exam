@@ -21,7 +21,7 @@ abel.create!([{ name: 'no11' },
              { name: 'no14'},
              { name: 'no15'},
              { name: 'no16'},
-             { name: 'no17',
+             { name: 'no17'},
              { name: 'no18'},
              { name: 'no19'},
              { name: 'no20'}
