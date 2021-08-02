@@ -3,8 +3,10 @@
 <%= form_with url: tasks_path, method: :get, local: true do |form| %>
   <%= form.text_field :name %>
   <%= form.select :status, [["未着手","未着手"],["着手","着手"],["完了","完了"]] ,include_blank: "選択して下さい" %>
+  <%= form.select("label_id", Label.pluck(:name, :id), { include_blank: true }) %>
   <%= form.submit '検索'%>
 <% end %>
+
 
 <table>
   <tr>
@@ -25,7 +27,12 @@
       <td><%= task.user.name %></td>
       <td><button type="button" class="btn btn-succes btn-xs"><%= link_to t('view.details'),task_path(task.id) %></button></td>
       <td><button type="button" class="btn btn-warning btn-xs"><%= link_to t('view.edit'), edit_task_path(task.id) %></button></td>
-      <td><td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
+      <td><button type="button" class="btn btn-danger btn-xs"><%= link_to t('view.delete'), task_path(task.id),method: :delete %></button></td>
+      <td>
+        <% task.labels.each do |label| %>
+          <%= label.name%>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 <% end %>
