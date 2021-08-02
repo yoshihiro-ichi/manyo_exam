@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       #  ここに追記
       redirect_to user_path(@user.id)
+binding.pry
       flash[:notice] = 'ログインしました'
     else
       render :new

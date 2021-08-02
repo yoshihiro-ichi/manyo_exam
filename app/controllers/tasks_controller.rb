@@ -2,13 +2,14 @@ class TasksController < ApplicationController
 before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   def index
-
     if params[:sort_deadline].present?
       @tasks = Task.all.order(deadline: :desc)
     elsif params[:name].present?
       @tasks = Task.name_search(params[:name])
     elsif params[:status].present?
       @tasks = Task.status_search(params[:status])
+    elsif params[:label_id].present?
+      @tasks  = Task. all.joins(:labels).where(labels: { id: params[:label_id] })
     elsif params[:sort_pryority].present?
       @tasks = Task.all.order(priority: :desc)
     else
@@ -26,7 +27,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
   end
   def new
   @task = Task.new
-  
+
   end
 
   # def search
@@ -53,7 +54,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   def update
         if @task.update(task_params)
-        redirect_to task_path, notice: "ブログを編集しました！"
+        redirect_to tasks_path, notice: "ブログを編集しました！"
       else
         render :edit
       end
@@ -66,7 +67,7 @@ before_action :set_task, only:[:show,:edit,:destroy,:update]
 
   private
   def task_params
-    params.require(:task).permit(:name,:content,:deadline,:status,:priority )
+    params.require(:task).permit(:name,:content,:deadline,:status,:priority, { label_ids: [] } )
   end
 
   def set_task

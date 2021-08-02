@@ -4,4 +4,8 @@
 <p><%= @task.deadline%></p>
 <p><%= @task.status %></p>
 <p><%= @task.priority %></p>
-<%= link_to "一覧画面へ", task_path %>
+<% @task.labels.each do |label| %>
+  <%= label.name%>
+<% end %>
+
+<%= link_to "一覧画面へ", tasks_path %>

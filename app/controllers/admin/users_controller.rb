@@ -25,6 +25,7 @@ class Admin::UsersController < ApplicationController
   def update
       if @user.update(user_params)
         redirect_to admin_users_path, notice: "更新完了"
+# binding.pry
       elsif @user.errors.any?
         render :edit
       else
