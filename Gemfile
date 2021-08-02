@@ -19,7 +19,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
   gem 'pry-rails'
-
+  # gem 'pry-rails', '~> 0.3.4'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
+  gem 'pry-doc', '~> 0.8.0'    # methodを表示
+  # gem 'pry-byebug', '~> 3.3.0' # デバッグを実施(Ruby 2.0以降で動作する)
+  gem 'pry-stack_explorer', '~> 0.4.9.2' # スタックをたどれる
 end
 
 group :development do
@@ -27,6 +30,8 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'better_errors'
+  gem "binding_of_caller"
 end
 
 group :test do
