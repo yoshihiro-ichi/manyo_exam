@@ -4,17 +4,17 @@ RSpec.describe 'タスク管理機能', type: :system do
   let!(:task) { FactoryBot.create(:task, user_id: user.id) }
   let!(:task2) { FactoryBot.create(:scond_task, user_id: user.id) }
   # let!(:task3) { FactoryBot.create(:task3, user_id: user.id) }
-  before do
-    visit new_session_path
-    fill_in :session_email, with: "tack@a.com"
-    fill_in :session_password, with: "111111"
-    click_on 'commit'
-  end
+  # before do
+  #   visit new_session_path
+  #   fill_in :session_email, with: "tack@a.com"
+  #   fill_in :session_password, with: "111111"
+  #   click_on 'commit'
+  # end
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
         visit new_task_path
-        fill_in 'task[name]', with: '新タスク'
+        fill_in 'task[name]', with: ''
         fill_in 'task[content]', with: 'タスク内容'
         fill_in 'task[deadline]',with: '2021-07-01 00:00:00'
         select '未着手', from: 'task[status]'

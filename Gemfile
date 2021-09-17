@@ -23,6 +23,11 @@ group :development, :test do
   gem 'pry-doc', '~> 0.8.0'    # methodを表示
   # gem 'pry-byebug', '~> 3.3.0' # デバッグを実施(Ruby 2.0以降で動作する)
   gem 'pry-stack_explorer', '~> 0.4.9.2' # スタックをたどれる
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'pry-byebug'
+
 end
 
 group :development do

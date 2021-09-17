@@ -53,27 +53,27 @@
 #         end
 #
 #
-#   10.times do
-#   i = 1
-#   d1 = Date.parse("2021/04/13")
-#   d2 = Date.parse("2021/08/30")
-#   date = Random.rand(d1..d2)
-#   name = ('a'..'z').to_a.shuffle[1..11].join
-#   content = ('A'..'Z').to_a.shuffle[1..15].join
-#   status = Random.rand(0..2)
-#   priority = Random.rand(0..2)
-#   user_id = Random.rand(1..8)
-#   Task.create(
-#    name: name,
-#    content: content,
-#    deadline:  date,
-#    status: status,
-#    priority: priority,
-#    user_id: user_id
-#   )
-#   i += 1
-#   end
-#
+  10.times do
+  i = 1
+  d1 = Date.parse("2021/04/13")
+  d2 = Date.parse("2021/08/30")
+  date = Random.rand(d1..d2)
+  name = ('a'..'z').to_a.shuffle[1..11].join
+  content = ('A'..'Z').to_a.shuffle[1..15].join
+  status = Random.rand(0..2)
+  priority = Random.rand(0..2)
+  user_id = Random.rand(1..8)
+  Task.create(
+   name: name,
+   content: content,
+   deadline:  date,
+   status: status,
+   priority: priority,
+   user_id: user_id
+  )
+  i += 1
+  end
+
 # task_id = 1
 # 10.times do
 # label_id = Random.rand(1..9)

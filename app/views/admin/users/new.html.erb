@@ -24,6 +24,9 @@
       <%= f.password_field :password_confirmation %><br><br>
       <%= f.label "管理者権限" %><br>
       <%= f.select :admin, [['一般',false],['管理者',true]], { include_blank: false }  %><br><br>
+			<div class="new_area">
+		     <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+		   </div>
       <%= f.submit "送信" %>
     </form>
     <% end %>

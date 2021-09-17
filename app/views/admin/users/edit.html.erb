@@ -24,6 +24,9 @@
       <%= f.label "管理者権限" %><br>
       <%= f.select :admin, [['一般',false],['管理者',true]]   %><br><br>
       <%= f.submit "送信" %>
+			<div class="new_area">
+		     <%= f.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+		   </div>
     </form>
     <% end %>
 </div>
