@@ -3,31 +3,31 @@
 #              password:  "111111",
 #              password_confirmation: "111111",
 #              admin: true)
-# Label.create!([{ name: 'No1' },
-#              { name: 'No2' },
-#              { name: 'No3'},
-#              { name: 'No4'},
-#              { name: 'No5'},
-#              { name: 'No6'},
-#              { name: 'No7'},
-#              { name: 'No8'},
-#              { name: 'No9'},
-#              { name: 'No10'}
-#              ])
-#
-# Label.create!([{ name: 'no11' },
-#              { name: 'no12' },
-#              { name: 'no13'},
-#              { name: 'no14'},
-#              { name: 'no15'},
-#              { name: 'no16'},
-#              { name: 'no17'},
-#              { name: 'no18'},
-#              { name: 'no19'},
-#              { name: 'no20'}
-#              ])
-#
-#
+Label.create!([{ name: '屋外' },
+             { name: 'トイレあり' },
+             { name: '綺麗'},
+             { name: '女性向け'},
+             { name: 'No5'},
+             { name: 'No6'},
+             { name: 'No7'},
+             { name: 'No8'},
+             { name: 'No9'},
+             { name: 'No10'}
+             ])
+
+Label.create!([{ name: 'no11' },
+             { name: 'no12' },
+             { name: 'no13'},
+             { name: 'no14'},
+             { name: 'no15'},
+             { name: 'no16'},
+             { name: 'no17'},
+             { name: 'no18'},
+             { name: 'no19'},
+             { name: 'no20'}
+             ])
+
+
 #
 #
 #
@@ -53,26 +53,26 @@
 #         end
 #
 #
-  10.times do
-  i = 1
-  d1 = Date.parse("2021/04/13")
-  d2 = Date.parse("2021/08/30")
-  date = Random.rand(d1..d2)
-  name = ('a'..'z').to_a.shuffle[1..11].join
-  content = ('A'..'Z').to_a.shuffle[1..15].join
-  status = Random.rand(0..2)
-  priority = Random.rand(0..2)
-  user_id = Random.rand(1..8)
-  Task.create(
-   name: name,
-   content: content,
-   deadline:  date,
-   status: status,
-   priority: priority,
-   user_id: user_id
-  )
-  i += 1
-  end
+  # 10.times do
+  # i = 1
+  # d1 = Date.parse("2021/04/13")
+  # d2 = Date.parse("2021/08/30")
+  # date = Random.rand(d1..d2)
+  # name = ('a'..'z').to_a.shuffle[1..11].join
+  # content = ('A'..'Z').to_a.shuffle[1..15].join
+  # status = Random.rand(0..2)
+  # priority = Random.rand(0..2)
+  # user_id = Random.rand(1..8)
+  # Task.create(
+  #  name: name,
+  #  content: content,
+  #  deadline:  date,
+  #  status: status,
+  #  priority: priority,
+  #  user_id: user_id
+  # )
+  # i += 1
+  # end
 
 # task_id = 1
 # 10.times do
